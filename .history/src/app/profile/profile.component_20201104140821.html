@@ -1,0 +1,105 @@
+<main class="profile-page">
+  <section class="section-profile-cover section-shaped my-0">
+    <!-- Circles background -->
+    <div class="shape shape-style-1 shape-primary alpha-4">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="card card-profile shadow mt--300">
+        <div class="px-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a href="javascript:void(0)">
+                  <img src="./assets/img/brand/autosweeprfid.jpg" class="rounded-circle">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+              <div class="card-profile-actions py-4 mt-lg-0">
+                <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">Connect</a>
+                <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Message</a> -->
+              </div>
+            </div>
+            <div class="col-lg-4 order-lg-1">
+              <div class="card-profile-stats d-flex justify-content-center">
+                <!-- <div>
+                  <span class="heading">22</span>
+                  <span class="description">Friends</span>
+                </div> -->
+                <!-- <div>
+                  <span class="heading">10</span>
+                  <span class="description">Photos</span>
+                </div> -->
+                <div>
+                  <span class="heading">&nbsp;</span>
+                  <span class="description">&nbsp;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <h3>Fill in the form</h3>
+          </div>
+          <div class="border-top text-center">
+            <div class="row justify-content-center">
+              <div class="col-lg-9">
+                <section class="section pb-0 section-components">
+                  <div class="container">
+                    <div class="row">
+
+                      <form-wizard>
+                        <wizard-step [title]="'Step1'" [isValid]="emailForm.form.valid" (onNext)="onStep1Next($event)">
+                          <h1>Step1</h1>
+                          <form #emailForm="ngForm">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+                                [(ngModel)]="data.email" required>
+                              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                          </form>
+                        </wizard-step>
+                        <wizard-step [title]="'Step2'" >
+                          <h1>Step2</h1>
+                        </wizard-step>
+                        <wizard-step [title]="'Step3'" >
+                          <h1>Step3</h1>
+                        </wizard-step>
+                        <wizard-step [title]="'Step4'" >
+                          <div [ngSwitch]="isCompleted">
+                            <div *ngSwitchDefault>
+                              <h1>Step4</h1>
+                            </div>
+                            <div *ngSwitchCase="true">
+                              <h4>Thank you! You have completed all the steps.</h4>
+                            </div>
+                          </div>
+                        </wizard-step>
+                      </form-wizard>
+
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

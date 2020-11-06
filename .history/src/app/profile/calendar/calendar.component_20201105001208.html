@@ -1,0 +1,108 @@
+<div style="width: auto;">
+    <full-calendar [options]="calendarOptions" style="cursor: pointer;"></full-calendar>
+    <div *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type"  [dismissible]="true"  (close)="close(alert)" >
+          <ng-container *ngIf="alert.icon">
+            <div class="alert-inner--icon">
+                <i class="{{alert.icon}}"></i>
+            </div>
+          </ng-container>
+          <span class="alert-inner--text">  <strong>{{alert.strong}} </strong>{{ alert.message }}</span>
+        </ngb-alert>
+      </div>
+</div>
+
+<div class="col-md-4">
+    <ng-template #classic1 let-c="close" let-d="dismiss">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-white pb-5">
+              <div class="text-muted text-center mb-3">
+                <small>Fill in the form to complete the schedule</small>
+              </div>
+            </div>
+            <div class="card-body px-lg-5 py-lg-5">
+              <form #form1="ngForm" [formGroup]="form" (submit)="submit(form1)">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input 
+                        class="form-control" 
+                        placeholder="Email Address"
+                        formControlName="emailAddress" 
+                        type="email"
+                        required>
+                  </div>
+                </div>
+               
+                <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                      </div>
+                      <input 
+                          class="form-control" 
+                          placeholder="Full Name"
+                          formControlName="completeName" 
+                          type="text" 
+                          required>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-tag"></i></span>
+                      </div>
+                      <input 
+                          class="form-control" 
+                          placeholder="Plate Number"
+                          formControlName="plateNumber" 
+                          type="text">
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-watch-time"></i></span>
+                      </div>
+                      <select 
+                        class="form-control"
+                        formControlName="appointmentTime"
+                        required>
+                        <option *ngFor="let item of timeArray" [ngValue]="item">{{item}}:00</option>
+                    </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-delivery-fast"></i></span>
+                      </div>
+                      <input 
+                          (input)="onTextChange($event)"
+                          class="form-control" 
+                          placeholder="Vehicle Class ID"
+                          formControlName="vehicleClassId" 
+                          type="number"
+                          max="3"
+                          min="1">
+                    </div>
+                    <label *ngIf="showClassDesc">
+                        {{classMessage}}
+                    </label>
+                  </div>
+                <div class="text-center">
+                  <button type="submit" [disabled]="!form.valid || !enableButton" class="btn btn-primary my-4">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+

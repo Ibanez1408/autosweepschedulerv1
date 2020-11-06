@@ -1,0 +1,97 @@
+import { Component, OnInit } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/angular';
+
+@Component({
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.css']
+})
+export class CalendarComponent implements OnInit {
+
+  // calendarOptions:Object = {
+  //   height: 'parent',
+  //   fixedWeekCount : false,
+  //   defaultDate: '2016-09-12',
+  //   editable: true,
+  //   eventLimit: true, // allow "more" link when too many events
+  //   events: [
+  //     {
+  //       title: 'All Day Event',
+  //       start: '2016-09-01'
+  //     },
+  //     {
+  //       title: 'Long Event',
+  //       start: '2016-09-07',
+  //       end: '2016-09-10'
+  //     },
+  //     {
+  //       id: 999,
+  //       title: 'Repeating Event',
+  //       start: '2016-09-09T16:00:00'
+  //     },
+  //     {
+  //       id: 999,
+  //       title: 'Repeating Event',
+  //       start: '2016-09-16T16:00:00'
+  //     },
+  //     {
+  //       title: 'Conference',
+  //       start: '2016-09-11',
+  //       end: '2016-09-13'
+  //     },
+  //     {
+  //       title: 'Meeting',
+  //       start: '2016-09-12T10:30:00',
+  //       end: '2016-09-12T12:30:00'
+  //     },
+  //     {
+  //       title: 'Lunch',
+  //       start: '2016-09-12T12:00:00'
+  //     },
+  //     {
+  //       title: 'Meeting',
+  //       start: '2016-09-12T14:30:00'
+  //     },
+  //     {
+  //       title: 'Happy Hour',
+  //       start: '2016-09-12T17:30:00'
+  //     },
+  //     {
+  //       title: 'Dinner',
+  //       start: '2016-09-12T20:00:00'
+  //     },
+  //     {
+  //       title: 'Birthday Party',
+  //       start: '2016-09-13T07:00:00'
+  //     },
+  //     {
+  //       title: 'Click for Google',
+  //       url: 'http://google.com/',
+  //       start: '2016-09-28'
+  //     }
+  //   ]
+  // };
+
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    dateClick: this.handleDateClick.bind(this), // bind is important!
+    events: [
+      { title: 'event 1', date: '2020-11-01' },
+      { title: 'event 2', date: '2019-04-02' }
+    ],
+  };
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  handleDateClick(arg) {
+    if (arg.dateStr === '2020-11-01') {
+      alert('Date is already full.');
+    } else {
+      alert('date click! ' + arg.dateStr);
+    }
+  }
+
+}
